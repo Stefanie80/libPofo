@@ -16,4 +16,12 @@ path, you can use "make olib" to run the optimizer over each file, making
 the lib about 5% smaller. Then you can run "make test" to build a 
 "Test.exe" that uses some of the routines in the Library.
 
+Update:
+I found out that either the gets() or the fputs() routine in the stdio.s of
+Desmet 2.51 crash the Portfolio. It works well with Desmet 3.1 however. Too sad
+that i don't have the sources for the 2.51 librarys. I will try to find a 
+workaround for this. I really want the 2.51 version to work, because the 3.1
+needs too much RAM to compile usefull programs on the 128k-Portfolio. It should 
+work with more RAM though.
+
 Happy Hacking!
