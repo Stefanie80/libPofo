@@ -24,4 +24,7 @@ workaround for this. I really want the 2.51 version to work, because the 3.1
 needs too much RAM to compile usefull programs on the 128k-Portfolio. It should 
 work with more RAM though.
 
+Credits:
+Klaus Peichl for his Assembler PutPixel-Routine
+
 Happy Hacking!
