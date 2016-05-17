@@ -1,5 +1,26 @@
 /* C Library for the ATARI Portfolio */
 
+/* HWasm, LCD Put Pixel */
+hw_putPixel(x, y, p);
+
+/* INT10, Fn 0Ch Set Pixel */
+int10_putPixel(x, y, p);
+
+/* INT10, Fn 0Dh Get Pixel */
+char int10_getPixel(x, y);
+
+/* INT10, Fn 00h, Set Video Mode */
+int10_setMode(mode);
+
+/* INT10, Fn 0Fh, Get Video Mode */
+char int10_getMode();
+
+/* HWadr, 8060h Get LCD Contrast */
+char pofo_getContrast();
+
+/* HWadr, 8060h Set LCD Contrast */
+pofo_setContrast(cont);
+
 /* INT21, Fn 1A Set DTA Buffer */
 int21_setDTA(ptr);
 

@@ -1,6 +1,23 @@
 @echo off
 echo Making optimized libopofo.s
 cd ..\src
+
+c88 hwpixel px A
+echo.
+o88 <hwpixel.a >hwpixel.opt
+del hwpixel.a
+ren hwpixel.opt hwpixel.a
+asm88 hwpixel
+echo.
+del hwpixel.a
+
+if errorlevel 1 goto stop
+call ..\bat\opt int10gfx
+echo.
+if errorlevel 1 goto stop
+call ..\bat\opt hw8060h
+echo.
+if errorlevel 1 goto stop
 call ..\bat\opt helpers
 echo.
 if errorlevel 1 goto stop

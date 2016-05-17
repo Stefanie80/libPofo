@@ -113,4 +113,29 @@ main()
   size = int12_getMemorySize();
   printf("Total Memory: %d kB\n", size);
 
+  tmp = int10_getMode();
+  printf("----=< GRAPHICS >=----------------------\n");
+  int61_delay500mS();
+  int61_delay500mS();
+  printf("Painting Black with BIOS\n");
+  int61_delay500mS();
+  int61_delay500mS();
+  int61_delay500mS();
+  printf("Crearing with Hardware\n");
+  int61_delay500mS();
+  int61_delay500mS();
+  int61_delay500mS();
+
+  int10_setMode(0x0A);
+  for(x=0; x<240; x++) {
+    for(y=0; y<64; y++) {
+      int10_putPixel(x, y, 0xFF);
+    }
+  }
+  for(x=0; x<240; x++) {
+    for(y=0; y<64; y++) {
+      hw_putPixel(x, y, 0);
+    }
+  }
+  int10_setMode(tmp);
 }
