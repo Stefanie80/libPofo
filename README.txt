@@ -1,4 +1,5 @@
-This Library has been compiled with Desmet C 2.51 
+This Library has been compiled with Desmet C 3.1N,
+but compiles as well on Desmet C 2.51
 
 It can be used to compile Programs on and for the ATARI Portfolio.
 Building the Library fails on the Portfolio, but binding it into 
