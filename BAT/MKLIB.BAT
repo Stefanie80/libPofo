@@ -1,6 +1,36 @@
 @echo off
 echo Making libpofo.s ...
 cd ..\src
+c88 i60f00
+echo.
+if errorlevel 1 goto stop
+c88 i10f03
+echo.
+if errorlevel 1 goto stop
+c88 i1af01
+echo.
+if errorlevel 1 goto stop
+c88 i10f02
+echo.
+if errorlevel 1 goto stop
+c88 i1af04
+echo.
+if errorlevel 1 goto stop
+c88 i1af02
+echo.
+if errorlevel 1 goto stop
+c88 i1af00
+echo.
+if errorlevel 1 goto stop
+c88 i11f00
+echo.
+if errorlevel 1 goto stop
+c88 i16f00
+echo.
+if errorlevel 1 goto stop
+c88 i61f24
+echo.
+if errorlevel 1 goto stop
 c88 hwpixel px
 echo.
 if errorlevel 1 goto stop

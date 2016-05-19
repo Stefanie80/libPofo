@@ -4,13 +4,16 @@
 
 main()
 {
+  unsigned itmp;
   int size=0;
   char tmp;
+  char buff[10];
+  int60_getVersion(&buff);
 
   /* Init (INT61h, Fn00h) */
   int61_init();
 
-  printf("----=< DISK >=--------------------------\n");
+  printf("----=< DISK >=-------------------------\n");
 
   /* Size of RAM-Disk (INT61h, Fn07h) */
   size = int61_getDiskSize();
@@ -31,12 +34,10 @@ main()
   } else {
     printf("Error %#x\n", tmp);
   }
-  int61_delay500mS();
-  int61_delay500mS();
-  int61_delay500mS();
-  int61_delay500mS();
 
-  printf("----=< SCREEN >=------------------------\n");
+  printf("Press any Key");
+  tmp = int16_getKeystroke();
+  printf("\n----=< SCREEN >=-----------------------\n");
 
   /* Screen Size (INT61h, Fn0Dh) */
   size = int61_getScreenSize(0);
@@ -91,41 +92,92 @@ main()
   tmp = size;
   printf("Virtual Pos  : %d,%d\n", tmp, (size >> 8));
 
-  int61_delay500mS();
-  int61_delay500mS();
-  int61_delay500mS();
-  int61_delay500mS();
-
-  printf("----=< AUDIO >=-------------------------\n");
+  printf("Press any Key");
+  tmp = int16_getKeystroke();
+  printf("\n----=< AUDIO >=------------------------\n");
   char tones[25]= {0x30, 0x31, 0x32, 0x33, 0x34,
                    0x35, 0x36, 0x37, 0x38, 0x39,
                    0x3A, 0x29, 0x3B, 0x3C, 0x3D,
                    0x0E, 0x3E, 0x2C, 0x3F, 0x04,
                    0x05, 0x25, 0x2F, 0x06, 0x07 };
+  char dtmf[16]=  {0x10, 0x11, 0x12, 0x13, 0x14,
+                   0x15, 0x16, 0x17, 0x18, 0x19,
+                   0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F};
+  char klick[6]=  {0x80, 0x01, 0x10, 0xA1, 0xA3, 0xA4};
+  char midl[9]=   {0xAB, 0x49, 0x4A, 0x2E, 0x2A,
+                   0x4C, 0x2B, 0x0F, 0x27};
+  char anschl[14]={0xB2, 0xB3, 0xB4, 0xB5, 0xB6,
+                   0xB7, 0xB8, 0xB9, 0xBA, 0xBB,
+                   0xBC, 0xBD, 0xBE, 0xBF};
+  printf("Melody Sounds:\n");
   for(tmp=0; tmp<25; tmp++) {
     int61_makeTone(tones[tmp], 5);
   }
   for(tmp=0; tmp<25; tmp++) {
     int61_makeTone(tones[24-tmp], 5);
   }
+  printf("Klick Melody Sounds:\n");
+  for(tmp=0; tmp<14; tmp++) {
+    int61_makeTone(anschl[tmp], 5);
+  }
+  for(tmp=0; tmp<14; tmp++) {
+    int61_makeTone(anschl[13-tmp], 5);
+  }
 
-  printf("----=< BIOS >=--------------------------\n");
+  printf("Other melody Sounds:\n");
+  for(tmp=0; tmp<9; tmp++) {
+    int61_makeTone(midl[tmp], 10);
+  }
+  for(tmp=0; tmp<9; tmp++) {
+    int61_makeTone(midl[8-tmp], 10);
+  }
+  printf("DTMF Sounds:\n");
+  for(tmp=0; tmp<16; tmp++) {
+    int61_makeTone(dtmf[tmp], 10);
+  }
+  for(tmp=0; tmp<16; tmp++) {
+    int61_makeTone(dtmf[15-tmp], 10);
+  }
+  printf("Klick Sounds:\n");
+  for(tmp=0; tmp<6; tmp++) {
+    int61_makeTone(klick[tmp], 10);
+  }
+  for(tmp=0; tmp<6; tmp++) {
+    int61_makeTone(klick[5-tmp], 10);
+  }
+
+  printf("Press any Key");
+  tmp = int16_getKeystroke();
+  printf("\n----=< BIOS >=-------------------------\n");
+  printf("OS Version: ");
+  puts(buff);
   size = int12_getMemorySize();
-  printf("Total Memory: %d kB\n", size);
+  itmp = int11_getEquipmentList();
+  if(itmp & 0x02) {
+    /* this should never happen on a pofo */
+    printf("80x87 Coprocessor present!\n");
+    printf("Please email tsteffi@gmx.de\n");
+    printf("And tell me how you did this!\n");
+    }
 
-  tmp = int10_getMode();
-  printf("----=< GRAPHICS >=----------------------\n");
-  int61_delay500mS();
-  int61_delay500mS();
+  tmp=(itmp & 0x0C) >> 2;
+  printf("%u RAM Banks, %d kB\n",tmp, size);
+  tmp=int11_getFloppies();
+  printf("%u Floppy Drive(s) installed\n",tmp);
+  tmp=int11_getComports();
+  printf("%u COM Port(s) installed\n",tmp);
+  tmp=int11_getParports();
+  printf("%u LPT Port(s) installed\n",tmp);
+
+  printf("Press any Key");
+  tmp = int16_getKeystroke();
+  printf("\n----=< GRAPHICS >=---------------------\n");
   printf("Painting Black with BIOS\n");
-  int61_delay500mS();
-  int61_delay500mS();
-  int61_delay500mS();
-  printf("Crearing with Hardware\n");
-  int61_delay500mS();
-  int61_delay500mS();
-  int61_delay500mS();
-
+  printf("Clearing with Hardware\n");
+  printf("Press any Key");
+  tmp = int16_getKeystroke();
+  printf("\n%#.x is not the any Key ;)\n", tmp);
+  tmp = int10_getMode();
   int10_setMode(0x0A);
   for(x=0; x<240; x++) {
     for(y=0; y<64; y++) {

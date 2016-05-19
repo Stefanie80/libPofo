@@ -24,3 +24,15 @@ int charToInt(byte0, byte1)
     size += byte0;
     return size;
 }
+
+char bcd2dec(bcd)
+  char bcd;
+{
+  return ((bcd>>4)*10)+bcd%16;
+}
+
+char dec2bcd(dec)
+  char dec;
+{
+  return ((dec/10)<<4)+(dec%10);
+}
