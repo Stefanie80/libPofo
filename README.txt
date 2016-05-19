@@ -5,8 +5,10 @@ It can be used to compile Programs on and for the ATARI Portfolio.
 Building the Library fails on the Portfolio, but binding it into 
 Programs works.
 It supports many of the INT61h Extended BIOS functions of the 
-Portfolio, as well as some DOS Calls and a BIOS Call to get the 
-Memory size.
+Portfolio, a number of BIOS and Hardware Video Functions, 
+DOS File search Functions, BIOS Calls to get Hardware info, 
+BIOS Calls to get Date, Time and Ticker, and some small Helper Functions. 
+
 Maybe it is usefull for someone ...
 
 The integrated make.bat assumes that you have Desmet C 2.51 in your path. 
