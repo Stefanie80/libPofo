@@ -1,4 +1,4 @@
-int60_getVersion(dest)
+pofo_getVersion(dest)
     char *dest;
 {
   extern unsigned _rax, _rdx, _rds;

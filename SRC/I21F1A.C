@@ -1,4 +1,4 @@
-int21_setDTA(ptr)
+pofo_dosSetDTA(ptr)
     int ptr;
 {
   extern unsigned _rax, _rdx, _rds;

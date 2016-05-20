@@ -1,5 +1,5 @@
 /* INT61, Fn 19h Get Serial Parameter */
-char int61_getSerialParam(port)
+char pofo_getSerialParam(port)
 	char port;
 {
   extern unsigned _rax, _rdx;

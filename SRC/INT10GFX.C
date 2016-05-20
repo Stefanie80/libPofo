@@ -1,4 +1,4 @@
-int10_putPixel(x, y, p)
+pofo_putPixel(x, y, p)
   char x;
   char y;
   char p;
@@ -11,7 +11,7 @@ int10_putPixel(x, y, p)
   _doint(0x10);
 }
 
-int10_setMode(mode)
+pofo_setGfxMode(mode)
     char mode;
 {
   extern unsigned _rax;
@@ -20,7 +20,7 @@ int10_setMode(mode)
   _doint(0x10);
 }
 
-char int10_getMode()
+char pofo_getGfxMode()
 {
   extern unsigned _rax;
   _rax=0x0F<<8;
@@ -28,7 +28,7 @@ char int10_getMode()
   return _rax;
 }
 
-char int10_getPixel(x, y)
+char pofo_getPixel(x, y)
   char x;
   char y;
 {

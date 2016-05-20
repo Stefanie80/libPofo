@@ -1,5 +1,5 @@
 /* INT61, Fn 16h Tone Generator */
-int61_makeTone(tone, dur)
+pofo_makeTone(tone, dur)
 	char tone;
 	int dur;
 {

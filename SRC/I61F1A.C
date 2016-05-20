@@ -1,5 +1,5 @@
 /* INT61, Fn 1Ah Get Peripheral ID */
-char int61_getPeripheralID()
+char pofo_getPeripheralID()
 {
   extern unsigned _rax;
   char tmp;

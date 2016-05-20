@@ -1,5 +1,5 @@
 /* INT12, Fn 00h Get Total Memory from BIOS */
-int int12_getMemorySize()
+int pofo_getTotalMemory()
 {
   extern unsigned _rax;
   _doint(0x12);

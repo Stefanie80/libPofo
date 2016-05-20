@@ -1,4 +1,4 @@
-int10_setCursorPos(x, y)
+pofo_setCursorPos(x, y)
   char x;
   char y;
 {

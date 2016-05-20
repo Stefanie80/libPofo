@@ -1,7 +1,7 @@
 /* C library for Portfolio */
 
 /* INT61, Fn 00h Init */
-void int61_init()
+void pofo_int61Init()
 {
   extern unsigned _rax;
   _rax = 0;
@@ -9,7 +9,7 @@ void int61_init()
 }
 
 /* INT61, Fn 07h Format CCM */
-char int61_formatCCM(drive)
+char pofo_formatCCM(drive)
 	char drive;
 {
   /* not yet implemented */
@@ -17,7 +17,7 @@ char int61_formatCCM(drive)
 }
 
 /* INT61, Fn 17h Dial Number */
-int61_dialNumber(number)
+pofo_dialNumber(number)
 	char *number[];
 {
   /* This one will need includes */
@@ -29,7 +29,7 @@ int61_dialNumber(number)
 /* INT61, Fn 18h Set DTMF duration */
 
 /* INT61, Fn 1Bh Set Peripheral ID */
-int61_setPeripheralID(byte)
+pofo_setPeripheralID(byte)
 	char byte;
 {
   /* not implemented */
@@ -67,7 +67,8 @@ int61_setPeripheralID(byte)
 /* INT61, Fn30h Open Port */
 /* INT61, Fn30h Close Port */
 /* INT61, Fn30h Delay 500 mS */
-int61_delay500mS()
+
+pofo_LPTdelay500mS()
 {
   extern unsigned _rax;
   _rax= (0x30<<8) + 4;

@@ -8,26 +8,26 @@ main()
   int size=0;
   char tmp;
   char buff[10];
-  int60_getVersion(&buff);
+  pofo_getVersion(&buff);
 
   /* Init (INT61h, Fn00h) */
-  int61_init();
+  pofo_int61Init();
 
   printf("----=< DISK >=-------------------------\n");
 
   /* Size of RAM-Disk (INT61h, Fn07h) */
-  size = int61_getDiskSize();
+  size = pofo_getDiskSize();
   printf("RAM Disk : %d k\n", size);
 
   /* CCM Status (INT61h, Fn0Bh) */
-  tmp = int61_checkCard(0);
+  tmp = pofo_checkCard(0);
   printf("Drive A  : ");
   if(tmp == 0) {
     printf("OK\n");
   } else {
     printf("Error %#x\n", tmp);
   }
-  tmp = int61_checkCard(1);
+  tmp = pofo_checkCard(1);
   printf("Drive B  : ");
   if(tmp == 0) {
     printf("OK\n");
@@ -36,17 +36,17 @@ main()
   }
 
   printf("Press any Key");
-  tmp = int16_getKeystroke();
+  tmp = pofo_getKeystroke();
   printf("\n----=< SCREEN >=-----------------------\n");
 
   /* Screen Size (INT61h, Fn0Dh) */
-  size = int61_getScreenSize(0);
+  size = pofo_getScreenSize(0);
   tmp = size;
   printf("Physical Size: %d x %d\n", tmp, (size >> 8));
-  size = int61_getScreenSize(1);
+  size = pofo_getScreenSize(1);
   tmp = size;
   printf("Logical Size : %d x %d\n", tmp, (size >> 8));
-  tmp = int61_getScreenMode();
+  tmp = pofo_getScreenMode();
 
   /* Screen Mode (INT61h, Fn0Eh) */
   printf("Screen Mode  : %#x ", tmp);
@@ -69,8 +69,8 @@ main()
   }
 
   /* Cursor Mode (INT61h, Fn0Fh) */
-  tmp = int61_setCursorMode(2);
-  tmp = int61_getCursorMode();
+  tmp = pofo_setCursorMode(2);
+  tmp = pofo_getCursorMode();
   printf("Cursor Mode  : %#x ", tmp);
   switch(tmp) {
     case 0:
@@ -88,12 +88,12 @@ main()
   }
 
   /* Virtual Screen Pos (INT61h, Fn10h) */
-  size = int61_getVirtualScreen();
+  size = pofo_getVirtualScreen();
   tmp = size;
   printf("Virtual Pos  : %d,%d\n", tmp, (size >> 8));
 
   printf("Press any Key");
-  tmp = int16_getKeystroke();
+  tmp = pofo_getKeystroke();
   printf("\n----=< AUDIO >=------------------------\n");
   char tones[25]= {0x30, 0x31, 0x32, 0x33, 0x34,
                    0x35, 0x36, 0x37, 0x38, 0x39,
@@ -111,48 +111,48 @@ main()
                    0xBC, 0xBD, 0xBE, 0xBF};
   printf("Melody Sounds:\n");
   for(tmp=0; tmp<25; tmp++) {
-    int61_makeTone(tones[tmp], 5);
+    pofo_makeTone(tones[tmp], 5);
   }
   for(tmp=0; tmp<25; tmp++) {
-    int61_makeTone(tones[24-tmp], 5);
+    pofo_makeTone(tones[24-tmp], 5);
   }
   printf("Klick Melody Sounds:\n");
   for(tmp=0; tmp<14; tmp++) {
-    int61_makeTone(anschl[tmp], 5);
+    pofo_makeTone(anschl[tmp], 5);
   }
   for(tmp=0; tmp<14; tmp++) {
-    int61_makeTone(anschl[13-tmp], 5);
+    pofo_makeTone(anschl[13-tmp], 5);
   }
 
   printf("Other melody Sounds:\n");
   for(tmp=0; tmp<9; tmp++) {
-    int61_makeTone(midl[tmp], 10);
+    pofo_makeTone(midl[tmp], 10);
   }
   for(tmp=0; tmp<9; tmp++) {
-    int61_makeTone(midl[8-tmp], 10);
+    pofo_makeTone(midl[8-tmp], 10);
   }
   printf("DTMF Sounds:\n");
   for(tmp=0; tmp<16; tmp++) {
-    int61_makeTone(dtmf[tmp], 10);
+    pofo_makeTone(dtmf[tmp], 10);
   }
   for(tmp=0; tmp<16; tmp++) {
-    int61_makeTone(dtmf[15-tmp], 10);
+    pofo_makeTone(dtmf[15-tmp], 10);
   }
   printf("Klick Sounds:\n");
   for(tmp=0; tmp<6; tmp++) {
-    int61_makeTone(klick[tmp], 10);
+    pofo_makeTone(klick[tmp], 10);
   }
   for(tmp=0; tmp<6; tmp++) {
-    int61_makeTone(klick[5-tmp], 10);
+    pofo_makeTone(klick[5-tmp], 10);
   }
 
   printf("Press any Key");
-  tmp = int16_getKeystroke();
+  tmp = pofo_getKeystroke();
   printf("\n----=< BIOS >=-------------------------\n");
   printf("OS Version: ");
   puts(buff);
-  size = int12_getMemorySize();
-  itmp = int11_getEquipmentList();
+  size = pofo_getTotalMemory();
+  itmp = pofo_getEquipmentList();
   if(itmp & 0x02) {
     /* this should never happen on a pofo */
     printf("80x87 Coprocessor present!\n");
@@ -162,32 +162,32 @@ main()
 
   tmp=(itmp & 0x0C) >> 2;
   printf("%u RAM Banks, %d kB\n",tmp, size);
-  tmp=int11_getFloppies();
+  tmp=pofo_getFloppies();
   printf("%u Floppy Drive(s) installed\n",tmp);
-  tmp=int11_getComports();
+  tmp=pofo_getComports();
   printf("%u COM Port(s) installed\n",tmp);
-  tmp=int11_getParports();
+  tmp=pofo_getParports();
   printf("%u LPT Port(s) installed\n",tmp);
 
   printf("Press any Key");
-  tmp = int16_getKeystroke();
+  tmp = pofo_getKeystroke();
   printf("\n----=< GRAPHICS >=---------------------\n");
   printf("Painting Black with BIOS\n");
   printf("Clearing with Hardware\n");
   printf("Press any Key");
-  tmp = int16_getKeystroke();
+  tmp = pofo_getKeystroke();
   printf("\n%#.x is not the any Key ;)\n", tmp);
-  tmp = int10_getMode();
-  int10_setMode(0x0A);
+  tmp = pofo_getGfxMode();
+  pofo_setGfxMode(0x0A);
   for(x=0; x<240; x++) {
     for(y=0; y<64; y++) {
-      int10_putPixel(x, y, 0xFF);
+      pofo_putPixel(x, y, 0xFF);
     }
   }
   for(x=0; x<240; x++) {
     for(y=0; y<64; y++) {
-      hw_putPixel(x, y, 0);
+      pofo_HWputPixel(x, y, 0);
     }
   }
-  int10_setMode(tmp);
+  pofo_setGfxMode(tmp);
 }

@@ -1,6 +1,19 @@
-@echo off
-echo Making libpofo.s ...
-cd ..\src
+set file=i21f30 
+echo %file%
+c88 %file%
+echo.
+if errorlevel 1 goto stop
+set file=i60f08 
+echo %file%
+c88 %file%
+echo.
+if errorlevel 1 goto stop
+c88 i21f2b
+echo.
+if errorlevel 1 goto stop
+c88 i21f2D
+echo.
+if errorlevel 1 goto stop
 c88 i60f00
 echo.
 if errorlevel 1 goto stop
@@ -106,13 +119,10 @@ if errorlevel 1 goto stop
 c88 I61F00
 echo.
 if errorlevel 1 goto stop
-
 lib88 -Flibpofo.lst -Olibpofo
 echo.
 copy libpofo.s ..
 copy libpofo.h ..
-
 del *.s
 del *.o
 :stop
-cd ..

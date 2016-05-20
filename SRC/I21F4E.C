@@ -1,4 +1,4 @@
-int int21_findFirstFile(ptr, atr)
+int pofo_dosFindFirstFile(ptr, atr)
     int ptr;
     char atr;
 {

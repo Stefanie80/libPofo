@@ -1,5 +1,5 @@
 /* INT61, Fn 2Eh Disable Status Line */
-int61_disableStatus()
+pofo_disableStatus()
 {
   extern unsigned _rax;
   _rax = 0x2E << 8;
@@ -7,7 +7,7 @@ int61_disableStatus()
 }
 
 /* INT61, Fn 2Eh Enable Status Line */
-int61_enableStatus(row, col)
+pofo_enableStatus(row, col)
 	char row;
 	char col;
 {

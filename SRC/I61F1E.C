@@ -1,5 +1,5 @@
 /* INT61, Fn 1Eh Get Tick Speed */
-char int61_getTickSpeed()
+char pofo_getTickSpeed()
 {
   extern unsigned _rax, _rbx;
   _rax = 0x1E << 8;
@@ -8,7 +8,7 @@ char int61_getTickSpeed()
 }
 
 /* INT61, Fn 1Eh Set Tick Speed */
-int61_setTickSpeed(speed)
+pofo_setTickSpeed(speed)
 	char speed;
 {
   extern unsigned _rax, _rbx;

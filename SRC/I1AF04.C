@@ -1,4 +1,4 @@
-int1A_getSystemDate(dest)
+pofo_getSystemDate(dest)
     char *dest[];
 {
   extern unsigned _rax, _rcx, _rdx;

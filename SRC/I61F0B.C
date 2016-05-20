@@ -1,5 +1,5 @@
 /* INT61, Fn 0Bh Detect CCM Cards */
-char int61_checkCard(drive)
+char pofo_checkCard(drive)
 	char drive;
 {
   extern unsigned _rax;

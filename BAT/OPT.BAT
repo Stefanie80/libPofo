@@ -1,4 +1,5 @@
 @echo off
+echo %1
 c88 %1 A
 echo.
 o88 <%1.a >%1.opt

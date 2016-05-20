@@ -14,32 +14,38 @@ goto %1
 
 :clone
 ft bat\*.* bat\*.*/t
+ft bak\*.* bak\*.*/t
 ft src\*.* src\*.*/t
 ft *.*/t
 goto stop
 
 :all
-cd bat
-call mklib.bat
-cd bat
-call make_opt.bat
-cd bat
-call mktest.bat
+echo Making all ...
+cd src
+call ..\bat\mklib.bat
+call ..\bat\make_opt.bat
+call ..\bat\mktest.bat
+cd ..
 goto stop
 
 :lib
-cd bat
-call mklib.bat
+echo Making Library ...
+cd src
+call ..\bat\mklib.bat
+cd ..
 goto stop
 
 :olib
-cd bat
-call make_opt.bat
+echo Making optimized Library ...
+cd src
+call ..\bat\make_opt.bat
+cd ..
 goto stop
 
 :test
-cd bat
-call mktest.bat
+cd src
+call ..\bat\mktest.bat
+cd ..
 goto stop
 
 :clean

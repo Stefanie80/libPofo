@@ -1,4 +1,4 @@
-unsigned int10_getCursorPos()
+unsigned pofo_getCursorPos()
 {
   extern unsigned _rax, _rbx, _rcx, _rdx;
   _rax=0x0300;
@@ -7,7 +7,7 @@ unsigned int10_getCursorPos()
   return _rdx;
 }
 
-unsigned int10_getCursorShape()
+unsigned pofo_getCursorShape()
 {
   extern unsigned _rax, _rbx, _rcx, _rdx;
   _rax=0x0300;

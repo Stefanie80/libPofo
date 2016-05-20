@@ -1,5 +1,5 @@
 /* INT61, Fn 24h Get ROM Space State */
-char int61_getRomState() {
+char pofo_getRomState() {
   extern unsigned _rax, _rbx, _rdx;
   _rax=0;
   _rax=0x24<<8;
@@ -8,7 +8,7 @@ char int61_getRomState() {
 }
 
 /* INT61, Fn 24h Set ROM Space State */
-char int61_setRomState(state)
+char pofo_setRomState(state)
   char state;
 {
   extern unsigned _rax, _rbx, _rdx;
@@ -24,7 +24,7 @@ char int61_setRomState(state)
 }
 
 /* INT61, Fn 24h Get CCM State */
-char int61_getCcmState() {
+char pofo_getCcmState() {
   extern unsigned _rax, _rbx, _rdx;
   _rax=0;
   _rax=0x24<<8;
@@ -33,7 +33,7 @@ char int61_getCcmState() {
 }
 
 /* INT61, Fn 24h Set CCM State */
-char int61_setCcmState(state)
+char pofo_setCcmState(state)
   char state;
 {
   extern unsigned _rax, _rbx, _rdx;

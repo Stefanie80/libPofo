@@ -1,5 +1,5 @@
 /* INT61, Fn 15h Sound Settings */
-int61_setSound(func)
+pofo_setSound(func)
 	char func;
 {
   extern unsigned _rax;

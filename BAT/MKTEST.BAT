@@ -1,5 +1,4 @@
 @echo off
-cd ..\src
 copy ..\libpofo.s
 if not exist libpofo.s goto nolib
 
@@ -18,4 +17,4 @@ goto stop
 echo You must build the Library first!
 
 :stop
-cd ..
+

@@ -1,5 +1,5 @@
 /* INT61, Fn10h Get Virual Screen Pos */
-int int61_getVirtualScreen()
+int pofo_getVirtualScreen()
 {
   extern unsigned _rax, _rdx;
   _rax = 0x10 << 8;
@@ -8,7 +8,7 @@ int int61_getVirtualScreen()
 }
 
 /* INT61, Fn10h Set Virual Screen Pos */
-int int61_setVirtualScreen(row, col)
+int pofo_setVirtualScreen(row, col)
 	char row;
 	char col;
 {

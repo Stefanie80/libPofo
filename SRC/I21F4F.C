@@ -1,4 +1,4 @@
-int int21_findNextFile(atr)
+int pofo_dosFindNextFile(atr)
     char atr;
 {
   extern unsigned _rax, _rcx;

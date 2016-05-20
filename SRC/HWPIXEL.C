@@ -12,7 +12,7 @@
 ;
 ; *********************************************************************/
 
-hw_putPixel(x, y, p)
+pofo_HWputPixel(x, y, p)
     char x;
     char y;
     char p;

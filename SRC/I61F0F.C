@@ -1,5 +1,5 @@
 /* INT61, Fn0Fh Get Cursor Mode */
-char int61_getCursorMode()
+char pofo_getCursorMode()
 {
   extern unsigned _rax, _rbx;
   _rax = (0x0F << 8);
@@ -8,7 +8,7 @@ char int61_getCursorMode()
 }
 
 /* INT61, Fn0Fh Set Cursor Mode */
-char int61_setCursorMode(mode)
+char pofo_setCursorMode(mode)
 	char mode;
 {
   extern unsigned _rax, _rbx;

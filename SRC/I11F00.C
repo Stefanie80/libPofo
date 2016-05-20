@@ -1,11 +1,11 @@
-unsigned int11_getEquipmentList() {
+unsigned pofo_getEquipmentList() {
   extern unsigned _rax;
   _rax=0;
   _doint(0x11);
   return _rax;
 }
 
-char int11_getFloppies() {
+char pofo_getFloppies() {
   extern unsigned _rax;
   char tmp;
   _rax=0;
@@ -20,7 +20,7 @@ char int11_getFloppies() {
   }
 }
 
-char int11_getComports() {
+char pofo_getComports() {
   extern unsigned _rax;
   char tmp;
   _rax=0;
@@ -29,7 +29,7 @@ char int11_getComports() {
   return tmp;
 }
 
-char int11_getParports() {
+char pofo_getParports() {
   extern unsigned _rax;
   char tmp;
   _rax=0;

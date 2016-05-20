@@ -1,6 +1,17 @@
-@echo off
-echo Making optimized libopofo.s
-cd ..\src
+set file=i21f30 
+call ..\bat\opt %file%
+echo.
+if errorlevel 1 goto stop
+set file=i60f08 
+call ..\bat\opt %file%
+echo.
+if errorlevel 1 goto stop
+call ..\bat\opt i21f2b
+echo.
+if errorlevel 1 goto stop
+call ..\bat\opt i21f2d
+echo.
+if errorlevel 1 goto stop
 call ..\bat\opt i60f00
 echo.
 if errorlevel 1 goto stop
@@ -112,13 +123,10 @@ if errorlevel 1 goto stop
 call ..\bat\opt I61F00
 echo.
 if errorlevel 1 goto stop
-
 lib88 -Flibpofo.lst -Olibopofo
 echo.
 copy libopofo.s ..
 copy libpofo.h ..
 del *.o
 del *.s
-cd ..
-
 :stop

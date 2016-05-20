@@ -1,4 +1,4 @@
-int1A_setTicks(ticks)
+pofo_setTicks(ticks)
     unsigned ticks;
 {
   extern unsigned _rax, _rcx, _rdx;

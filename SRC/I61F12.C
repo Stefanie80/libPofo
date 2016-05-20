@@ -1,5 +1,5 @@
 /* INT61, Fn12h ScreenRefresh */
-int61_screenRefresh()
+pofo_screenRefresh()
 {
   extern unsigned _rax;
   _rax = 0x12 << 8;

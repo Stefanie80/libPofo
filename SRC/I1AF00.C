@@ -1,4 +1,4 @@
-long int1A_getTicks() {
+long pofo_getTicks() {
   extern unsigned _rax, _rcx, _rdx;
   long tmp;
   _rax=0x0000;

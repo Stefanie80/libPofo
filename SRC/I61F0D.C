@@ -1,5 +1,5 @@
 /* INT61, Fn0Dh Get Screen Size */
-int int61_getScreenSize(sw)
+int pofo_getScreenSize(sw)
 	char sw;
 {
   extern unsigned _rax, _rdx;

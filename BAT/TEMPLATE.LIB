@@ -1,0 +1,4 @@
+echo %file%
+c88 %file%
+echo.
+if errorlevel 1 goto stop

@@ -1,5 +1,5 @@
 /* INT61, Fn11h Move Virtual Screen */
-int61_moveVirtualScreen(dir, dist)
+pofo_moveVirtualScreen(dir, dist)
 	char dir;
 	char dist;
 {

@@ -1,5 +1,5 @@
 /* INT61, Fn 09h Format RAM Disk */
-char int61_formatRAM(size)
+char pofo_formatRAM(size)
 	unsigned size;
 {
   extern unsigned _rax, _rbx;

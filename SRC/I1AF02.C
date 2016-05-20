@@ -1,4 +1,4 @@
-int1A_getRealTime(dest)
+pofo_getRealTime(dest)
   char *dest[3];
 {
   extern unsigned _rax, _rcx, _rdx;
@@ -9,8 +9,8 @@ int1A_getRealTime(dest)
   _carryf=0;
   _doint(0x1A);
 
+  m = _rcx & 0x00FF;  
   h = _rcx>>8;
-  m = _rcx;
   s = _rdx>>8;
 
   dest[0] = bcd2dec(h);
